@@ -1,0 +1,9 @@
+{
+    "routes": [
+      {
+        "src": "/upload",
+        "dest": "http://10.8.82.221:5000/upload"
+      }
+    ]
+  }
+  

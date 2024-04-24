@@ -19,7 +19,6 @@ function App() {
             method: 'POST',
             body: formData,
           });
-    
           if (response.ok) {
             console.log('File uploaded successfully');
           } else {
@@ -27,11 +26,9 @@ function App() {
           }
         } catch (error) {
           console.error('Error uploading file:', error);
-        
         }
       } else {
         console.log('No file selected');
-        
       }
     };    
   
