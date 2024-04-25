@@ -1,0 +1,24 @@
+.App {
+  background-color: white !important;
+  .form {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    .title {
+      text-align: center;
+    }
+    .pdfFile {
+      text-align: center;
+      margin-left: 43%;
+      margin-right: auto;
+    }
+    .PDFButton {
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 1rem;
+      cursor: pointer !important;
+    }
+  }
+}
