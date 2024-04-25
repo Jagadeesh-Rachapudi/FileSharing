@@ -9,16 +9,35 @@ const Chat = () => {
 
   const handleChange = (e) => {
     setTyped(e.target.value);
+    // console.log(typed);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (typed.trim() !== "") {
-      const capitalizedQuestion =
-        typed.charAt(0).toUpperCase() + typed.slice(1);
-      setQuestion(capitalizedQuestion);
-      setAnswer("max is the max at maximum");
-      setTyped("");
+      try {
+        const capitalizedQuestion =
+          typed.charAt(0).toUpperCase() + typed.slice(1);
+        // console.log(capitalizedQuestion);
+        const response = await fetch("http://localhost:5000/answer", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ question: capitalizedQuestion }),
+        });
+
+        if (response.ok) {
+          const responseData = await response.json();
+          setAnswer(responseData.answer);
+          setQuestion(capitalizedQuestion);
+          setTyped("");
+        } else {
+          console.error("Failed to get answer from server");
+        }
+      } catch (error) {
+        console.error("Error while getting answer:", error);
+      }
     }
   };
 
