@@ -24,19 +24,27 @@ const Chat = (props) => {
   useEffect(() => {
     let words = answer.split(" ");
     let index = 0;
+    let cursorVisible = true;
 
     const updateDisplayAnswer = () => {
       if (index < words.length) {
         const trimmedWord = words[index].trim();
         setDisplayAnswer((prevDisplayAnswer) => {
+          let updatedAnswer = "";
           if (index === 0) {
-            return trimmedWord;
+            updatedAnswer = trimmedWord + (cursorVisible ? "        ▌" : "");
           } else {
-            return prevDisplayAnswer + " " + trimmedWord;
+            updatedAnswer =
+              prevDisplayAnswer.trim().replace(/▌$/, "") +
+              "   " +
+              trimmedWord +
+              (cursorVisible ? "      ▌" : "");
           }
+          return updatedAnswer;
         });
+        cursorVisible = !cursorVisible;
         index++;
-        const randomDelay = Math.random() * (500 - 100) + 100;
+        const randomDelay = Math.random() * (800 - 200) + 200;
         setTimeout(updateDisplayAnswer, randomDelay);
         setShowImg(false);
       } else {
@@ -108,7 +116,10 @@ const Chat = (props) => {
               <div>
                 <h2>{question}</h2>
                 <div className="answerContainer">
-                  <p className="Answer cursor">{displayAnswer} &#9646;</p>
+                  <div className="answerAndCursor Answer cursor">
+                    {displayAnswer}
+                    {/* <span className="blinkingCursor">&#9646;</span> */}
+                  </div>
                   {showImg && image && <img src={image} alt="Answer Image" />}
                 </div>
               </div>

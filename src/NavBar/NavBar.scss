@@ -1,43 +1,22 @@
 .canvasBody {
   background-color: cornsilk;
-  overflow-y: auto;
-}
 
-.offcanvas-body::-webkit-scrollbar {
-  display: none;
-}
+  .offcanvas-body::-webkit-scrollbar {
+    display: none;
+  }
 
-.NavBarBurgermenu {
-  margin-top: 1rem;
-  margin-left: 1rem;
-}
-.btn-close {
-  margin-top: 0.05rem;
-  margin-right: 0.5rem;
-}
-.canvasBody .offcanvas .offcanvas-start .show {
-  background-color: cornsilk;
-}
-.offcanvas-header {
-  background-color: cornsilk !important;
-}
-.topHedding {
-  margin-top: 0.25rem;
-  display: flex;
-  flex-direction: row;
-}
-.canvasBody {
-  background-color: cornsilk;
   .logo {
     width: 3.5rem;
     height: 2rem;
     border: 50%;
     background-color: cornsilk;
   }
+
   .offcanvas-body {
     padding: 10px;
     padding-left: 1rem;
     background-color: cornsilk !important;
+
     .QandA {
       cursor: pointer;
       margin-right: 0.35rem;
@@ -45,6 +24,10 @@
       border-radius: 10px;
       margin-top: 0.25rem;
       margin-bottom: 0.25rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
       .question {
         width: 22rem;
         padding-top: 0.2rem;
@@ -53,13 +36,44 @@
         text-decoration: underline;
         font-weight: 500;
         cursor: pointer;
+        max-width: 18rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
+
       .answer {
         padding-left: 0.35rem;
         height: 2rem;
         font-weight: 300;
         margin-left: 0.5rem;
+        max-width: 18rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
     }
   }
+}
+
+.offcanvas-header {
+  background-color: cornsilk !important;
+}
+
+.NavBarBurgermenu {
+  margin-top: 1rem;
+  margin-left: 1rem;
+}
+
+.btn-close {
+  margin-top: 0.05rem;
+  margin-right: 0.5rem;
+}
+
+.canvasBody .offcanvas .offcanvas-start .show {
+  background-color: cornsilk;
+}
+
+.topHedding {
+  margin-top: 0.25rem;
+  display: flex;
+  flex-direction: row;
 }

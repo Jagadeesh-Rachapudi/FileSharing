@@ -30,12 +30,32 @@
     flex-direction: column;
 
     .answerContainer {
-      overflow-y: auto; /* Show scrollbar when necessary */
-      overflow-x: hidden; /* Hide horizontal overflow */
-      max-height: 30rem; /* Adjust as needed */
-      color: black; /* Set answer text color to black */
-      scrollbar-width: thin; /* Firefox */
-      scrollbar-color: transparent transparent; /* Firefox */
+      overflow-y: auto;
+      overflow-x: hidden;
+      max-height: 30rem;
+      color: black;
+      scrollbar-width: thin;
+      scrollbar-color: transparent transparent;
+    }
+
+    .answerAndCursor {
+      display: flex;
+      flex-direction: row;
+    }
+
+    @keyframes blink {
+      0% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+    .blinkingCursor {
+      animation: blink 1s infinite;
     }
   }
 
