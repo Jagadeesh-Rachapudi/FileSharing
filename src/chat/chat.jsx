@@ -48,6 +48,9 @@ const Chat = (props) => {
         setTimeout(updateDisplayAnswer, randomDelay);
         setShowImg(false);
       } else {
+        setDisplayAnswer((prevDisplayAnswer) =>
+          prevDisplayAnswer.replace(/▌$/, "")
+        );
         setShowImg(true);
       }
     };
