@@ -1,6 +1,6 @@
 .App {
   background-color: white !important;
-  .form {
+  .pdfContainer {
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -10,7 +10,7 @@
     }
     .pdfFile {
       text-align: center;
-      margin-left: 43%;
+      margin-left: 43% !important;
       margin-right: auto;
     }
     .PDFButton {

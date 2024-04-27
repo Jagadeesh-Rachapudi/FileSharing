@@ -2,11 +2,12 @@ import Button from "react-bootstrap/Button";
 import { useState } from "react";
 import "./App.scss";
 import Chat from "./Chat/Chat.jsx";
+import NavBar from "./NavBar/NavBar";
 
 function App() {
   const [pdfFile, setPdfFile] = useState(null);
   const [disableButton, setDisableButton] = useState(true);
-  const [chatPage, setChatPage] = useState(true);
+  const [chatPage, setChatPage] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -43,26 +44,31 @@ function App() {
       <header className="App-header">
         {chatPage ? (
           <>
+            <div>
+              <NavBar />
+            </div>
             <Chat />
           </>
         ) : (
-          <form onSubmit={handleSubmit} className="formContainer">
-            <h1 className="title">Submit PDF</h1>
-            <input
-              className="pdfFile"
-              type="file"
-              accept="application/pdf"
-              onChange={handleFileChange}
-            />
-            <Button
-              variant="secondary"
-              className="SubmitPDFButton"
-              disabled={disableButton}
-              onClick={handleSubmit}
-            >
-              Submit
-            </Button>
-          </form>
+          <>
+            <form onSubmit={handleSubmit} className="pdfContainer">
+              <h1 className="title">Submit PDF</h1>
+              <input
+                className="pdfFile"
+                type="file"
+                accept="application/pdf"
+                onChange={handleFileChange}
+              />
+              <Button
+                variant="secondary"
+                className="PDFButton"
+                disabled={disableButton}
+                onClick={handleSubmit}
+              >
+                Submit
+              </Button>
+            </form>
+          </>
         )}
       </header>
     </div>
