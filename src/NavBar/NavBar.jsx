@@ -11,7 +11,7 @@ function NavBar(props) {
   const handleShow = () => setShow(true);
   console.log(props.questions);
   return (
-    <div>
+    <div className="canvasDivTag">
       <Button
         variant="outline"
         onClick={handleShow}

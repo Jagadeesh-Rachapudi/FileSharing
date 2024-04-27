@@ -1,3 +1,12 @@
+.canvasBody {
+  background-color: cornsilk;
+  overflow-y: auto;
+}
+
+.offcanvas-body::-webkit-scrollbar {
+  display: none;
+}
+
 .NavBarBurgermenu {
   margin-top: 1rem;
   margin-left: 1rem;
@@ -23,6 +32,7 @@
     width: 3.5rem;
     height: 2rem;
     border: 50%;
+    background-color: cornsilk;
   }
   .offcanvas-body {
     padding: 10px;
@@ -30,6 +40,7 @@
     background-color: cornsilk !important;
     .QandA {
       cursor: pointer;
+      margin-right: 0.35rem;
       background-color: rgb(176, 173, 173);
       border-radius: 10px;
       margin-top: 0.25rem;
