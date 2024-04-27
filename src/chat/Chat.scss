@@ -3,14 +3,20 @@
   background-color: white !important;
 
   .chatcontainer {
-    margin-top: 10rem;
-    width: 50rem;
+    margin-top: 3rem;
+    width: 75rem;
     margin-left: auto;
     margin-right: auto;
     display: flex;
     flex-direction: column;
-    .Answer {
-      word-wrap: break-word;
+
+    .answerContainer {
+      overflow-y: auto; /* Show scrollbar when necessary */
+      overflow-x: hidden; /* Hide horizontal overflow */
+      max-height: 30rem; /* Adjust as needed */
+      color: black; /* Set answer text color to black */
+      scrollbar-width: thin; /* Firefox */
+      scrollbar-color: transparent transparent; /* Firefox */
     }
   }
 

@@ -6,7 +6,7 @@ import Chat from "./Chat/Chat.jsx";
 function App() {
   const [pdfFile, setPdfFile] = useState(null);
   const [disableButton, setDisableButton] = useState(true);
-  const [chatPage, setChatPage] = useState(false);
+  const [chatPage, setChatPage] = useState(true);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -46,7 +46,7 @@ function App() {
             <Chat />
           </>
         ) : (
-          <form onSubmit={handleSubmit} className="form">
+          <form onSubmit={handleSubmit} className="formContainer">
             <h1 className="title">Submit PDF</h1>
             <input
               className="pdfFile"
@@ -56,7 +56,7 @@ function App() {
             />
             <Button
               variant="secondary"
-              className="PDFButton"
+              className="SubmitPDFButton"
               disabled={disableButton}
               onClick={handleSubmit}
             >

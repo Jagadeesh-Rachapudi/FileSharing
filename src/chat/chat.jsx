@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./Chat.scss";
 import Button from "react-bootstrap/Button";
 
@@ -6,7 +6,43 @@ const Chat = () => {
   const [question, setQuestion] = useState("");
   const [typed, setTyped] = useState("");
   const [answer, setAnswer] = useState("");
+  const [displayAnswer, setDisplayAnswer] = useState("");
   const [image, setImage] = useState("");
+  const [showImg, setShowImg] = useState(false);
+  const chatContainerRef = useRef(null);
+
+  useEffect(() => {
+    if (chatContainerRef.current) {
+      chatContainerRef.current.scrollTop =
+        chatContainerRef.current.scrollHeight;
+    }
+  }, [answer]);
+
+  useEffect(() => {
+    let words = answer.split(" ");
+    let index = 0;
+
+    const updateDisplayAnswer = () => {
+      if (index < words.length) {
+        const trimmedWord = words[index].trim();
+        setDisplayAnswer((prevDisplayAnswer) => {
+          if (index === 0) {
+            return trimmedWord;
+          } else {
+            return prevDisplayAnswer + " " + trimmedWord;
+          }
+        });
+        index++;
+        const randomDelay = Math.random() * (500 - 100) + 100;
+        setTimeout(updateDisplayAnswer, randomDelay);
+        setShowImg(false);
+      } else {
+        setShowImg(true);
+      }
+    };
+    updateDisplayAnswer();
+    return () => clearTimeout();
+  }, [answer]);
 
   const handleChange = (e) => {
     setTyped(e.target.value);
@@ -44,12 +80,14 @@ const Chat = () => {
 
   return (
     <div className="formContainer">
-      <div className="chatcontainer">
+      <div className="chatcontainer" ref={chatContainerRef}>
         {question && (
           <div>
             <h2>{question}</h2>
-            <p className="Answer">{answer}</p>
-            {image && <img src={image} alt="Answer Image" />}
+            <div className="answerContainer">
+              <p className="Answer cursor">{displayAnswer} &#9646;</p>
+              {showImg && image && <img src={image} alt="Answer Image" />}
+            </div>
           </div>
         )}
       </div>
@@ -60,6 +98,7 @@ const Chat = () => {
             value={typed}
             onChange={handleChange}
             className="inputBox"
+            autoFocus
           />
           <Button
             type="submit"
