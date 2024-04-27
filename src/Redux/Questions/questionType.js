@@ -1,1 +1,1 @@
-export const ASK_QUESTION = "ASK_QUESTION";
+export const UPDATE_STATE = "UPDATE_STATE";

@@ -2,7 +2,7 @@ import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { GiHamburgerMenu } from "react-icons/gi";
-import askQuestion from "../Redux/Questions";
+import requestUpdatation from "../Redux/Questions";
 import { connect } from "react-redux";
 
 function NavBar(props) {
@@ -38,7 +38,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    askQuestion: () => dispatch(askQuestion())
+    requestUpdatation: () => dispatch(requestUpdatation())
   };
 };
 

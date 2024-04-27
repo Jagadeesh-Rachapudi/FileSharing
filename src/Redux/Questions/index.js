@@ -1,3 +1,3 @@
-import { ASK_QUESTION } from "./questionType.js";
+import { UPDATE_STATE } from "./questionType.js";
 
-export default ASK_QUESTION;
+export default UPDATE_STATE;

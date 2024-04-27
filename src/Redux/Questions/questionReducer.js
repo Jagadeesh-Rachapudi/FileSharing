@@ -1,4 +1,4 @@
-import { ASK_QUESTION } from "./questionType";
+import { UPDATE_STATE } from "./questionType";
 
 const initialState = [
   {
@@ -25,21 +25,18 @@ const initialState = [
 ];
 
 const questionReducer = (state = initialState, action) => {
+  console.log("hello", action);
   switch (action.type) {
-    case ASK_QUESTION:
-      return state.map((question) => {
-        if (question.index === action.index) {
-          return {
-            ...question,
-            question: "Who is Sundar",
-            answer: "CEO of Google",
-            hasImg: false,
-            Img: "Not available"
-          };
-        } else {
-          return question;
-        }
-      });
+    case "UPDATE_STATE":
+      const maxIndex = Math.max(...state.map((question) => question.index));
+      const newQuestion = {
+        index: maxIndex + 1,
+        question: action.payload.question,
+        answer: action.payload.answer,
+        hasImg: action.payload.hasImg,
+        img: action.payload.img
+      };
+      return [...state, newQuestion];
     default:
       return state;
   }

@@ -1,8 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./Chat.scss";
 import Button from "react-bootstrap/Button";
+import { useDispatch } from "react-redux";
 
-const Chat = () => {
+const Chat = (props) => {
+  const dispatch = useDispatch();
   const [question, setQuestion] = useState("");
   const [typed, setTyped] = useState("");
   const [answer, setAnswer] = useState("");
@@ -69,6 +71,15 @@ const Chat = () => {
           setImage(responseData.image);
           setQuestion(capitalizedQuestion);
           setTyped("");
+          dispatch({
+            type: "UPDATE_STATE",
+            payload: {
+              question: capitalizedQuestion,
+              answer: responseData.answer,
+              hasImg: !!responseData.image,
+              img: responseData.image || "Not available"
+            }
+          });
         } else {
           console.error("Failed to get answer from server");
         }

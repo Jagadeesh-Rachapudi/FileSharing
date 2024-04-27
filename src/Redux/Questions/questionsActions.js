@@ -1,8 +1,8 @@
 // File1: ./questionType.js
-export const ASK_QUESTION = "ASK_QUESTION";
+export const UPDATE_STATE = "UPDATE_STATE";
 
-export const askQuestion = () => {
+export const requestUpdatation = () => {
   return {
-    type: ASK_QUESTION
+    type: UPDATE_STATE
   };
 };
