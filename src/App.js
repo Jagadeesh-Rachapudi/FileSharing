@@ -3,6 +3,8 @@ import { useState } from "react";
 import "./App.scss";
 import Chat from "./Chat/Chat.jsx";
 import NavBar from "./NavBar/NavBar";
+import { Provider } from "react-redux";
+import store from "./Redux/Questions/store";
 
 function App() {
   const [pdfFile, setPdfFile] = useState(null);
@@ -40,38 +42,40 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <header className="App-header">
-        {chatPage ? (
-          <>
-            <div>
-              <NavBar />
-            </div>
-            <Chat />
-          </>
-        ) : (
-          <>
-            <form onSubmit={handleSubmit} className="pdfContainer">
-              <h1 className="title">Submit PDF</h1>
-              <input
-                className="pdfFile"
-                type="file"
-                accept="application/pdf"
-                onChange={handleFileChange}
-              />
-              <Button
-                variant="secondary"
-                className="PDFButton"
-                disabled={disableButton}
-                onClick={handleSubmit}
-              >
-                Submit
-              </Button>
-            </form>
-          </>
-        )}
-      </header>
-    </div>
+    <Provider store={store}>
+      <div className="App">
+        <header className="App-header">
+          {chatPage ? (
+            <>
+              <div>
+                <NavBar />
+              </div>
+              <Chat />
+            </>
+          ) : (
+            <>
+              <form onSubmit={handleSubmit} className="pdfContainer">
+                <h1 className="title">Submit PDF</h1>
+                <input
+                  className="pdfFile"
+                  type="file"
+                  accept="application/pdf"
+                  onChange={handleFileChange}
+                />
+                <Button
+                  variant="secondary"
+                  className="PDFButton"
+                  disabled={disableButton}
+                  onClick={handleSubmit}
+                >
+                  Submit
+                </Button>
+              </form>
+            </>
+          )}
+        </header>
+      </div>
+    </Provider>
   );
 }
 
