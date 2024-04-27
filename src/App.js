@@ -1,7 +1,7 @@
 import Button from "react-bootstrap/Button";
 import { useState } from "react";
 import "./App.scss";
-import Form from "./Form/Form.jsx";
+import Chat from "./Chat/Chat.jsx";
 
 function App() {
   const [pdfFile, setPdfFile] = useState(null);
@@ -16,7 +16,7 @@ function App() {
         formData.append("pdfFile", pdfFile);
         const response = await fetch("http://localhost:5000/upload", {
           method: "POST",
-          body: formData,
+          body: formData
         });
         if (response.ok) {
           console.log("File uploaded successfully");
@@ -43,7 +43,7 @@ function App() {
       <header className="App-header">
         {chatPage ? (
           <>
-            <Form />
+            <Chat />
           </>
         ) : (
           <form onSubmit={handleSubmit} className="form">
