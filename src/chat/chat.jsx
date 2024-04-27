@@ -11,6 +11,7 @@ const Chat = (props) => {
   const [displayAnswer, setDisplayAnswer] = useState("");
   const [image, setImage] = useState("");
   const [showImg, setShowImg] = useState(false);
+  const [noQuestion, setNoQuestion] = useState(true);
   const chatContainerRef = useRef(null);
 
   useEffect(() => {
@@ -52,6 +53,7 @@ const Chat = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setNoQuestion(false);
     if (typed.trim() !== "") {
       try {
         const capitalizedQuestion =
@@ -91,17 +93,29 @@ const Chat = (props) => {
 
   return (
     <div className="formContainer">
-      <div className="chatcontainer" ref={chatContainerRef}>
-        {question && (
-          <div>
-            <h2>{question}</h2>
-            <div className="answerContainer">
-              <p className="Answer cursor">{displayAnswer} &#9646;</p>
-              {showImg && image && <img src={image} alt="Answer Image" />}
-            </div>
+      {noQuestion ? (
+        <div className="headingAndLogo">
+          <img
+            className="logo"
+            src="https://firebasestorage.googleapis.com/v0/b/peronal-stuff-61ac6.appspot.com/o/Hacketon%2FYamaha_full_logo_Red.jpg?alt=media&token=411209ea-e033-4ccd-8227-05f28e7de9b4"
+          />
+          <h1 className="greetings">How Can I help you?</h1>
+        </div>
+      ) : (
+        <>
+          <div className="chatcontainer" ref={chatContainerRef}>
+            {question && (
+              <div>
+                <h2>{question}</h2>
+                <div className="answerContainer">
+                  <p className="Answer cursor">{displayAnswer} &#9646;</p>
+                  {showImg && image && <img src={image} alt="Answer Image" />}
+                </div>
+              </div>
+            )}
           </div>
-        )}
-      </div>
+        </>
+      )}
       <div className="input-container">
         <form onSubmit={handleSubmit} className="bottomDiv">
           <input

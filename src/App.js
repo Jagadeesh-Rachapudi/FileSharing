@@ -9,7 +9,7 @@ import store from "./Redux/Questions/store";
 function App() {
   const [pdfFile, setPdfFile] = useState(null);
   const [disableButton, setDisableButton] = useState(true);
-  const [chatPage, setChatPage] = useState(true);
+  const [chatPage, setChatPage] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();

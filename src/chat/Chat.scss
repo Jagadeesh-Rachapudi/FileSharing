@@ -2,6 +2,25 @@
   height: 100%;
   background-color: white !important;
 
+  .headingAndLogo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 27rem;
+    margin-top: 30vh;
+  }
+
+  .logo {
+    width: 13rem;
+    height: 3.5rem;
+    margin-right: 1rem; /* Add margin for spacing between logo and heading */
+  }
+  .greetings {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .chatcontainer {
     margin-top: 3rem;
     width: 75rem;
