@@ -1,7 +1,54 @@
 .NavBarBurgermenu {
   margin-top: 1rem;
   margin-left: 1rem;
-  .Body {
-    padding: 50px;
+}
+.btn-close {
+  margin-top: 0.05rem;
+  margin-right: 0.5rem;
+}
+.canvasBody .offcanvas .offcanvas-start .show {
+  background-color: cornsilk;
+}
+.offcanvas-header {
+  background-color: cornsilk !important;
+}
+.topHedding {
+  margin-top: 0.25rem;
+  display: flex;
+  flex-direction: row;
+}
+.canvasBody {
+  background-color: cornsilk;
+  .logo {
+    width: 3.5rem;
+    height: 2rem;
+    border: 50%;
+  }
+  .offcanvas-body {
+    padding: 10px;
+    padding-left: 1rem;
+    background-color: cornsilk !important;
+    .QandA {
+      cursor: pointer;
+      background-color: rgb(176, 173, 173);
+      border-radius: 10px;
+      margin-top: 0.25rem;
+      margin-bottom: 0.25rem;
+      .question {
+        width: 22rem;
+        padding-top: 0.2rem;
+        padding-left: 0.5rem;
+        border-radius: 10px;
+        text-decoration: underline;
+        font-weight: 500;
+        cursor: pointer;
+      }
+      .answer {
+        padding-left: 0.35rem;
+        height: 2rem;
+        font-weight: 300;
+        margin-left: 0.5rem;
+      }
+    }
   }
 }
